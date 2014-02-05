@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.Functions" table="functions" catalog="sagi">
+        <id name="functionId" type="int">
+            <column name="FUNCTION_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="employees" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMPLOYEE_ID" precision="8" scale="0" />
+        </many-to-one>
+        <property name="createUser" type="boolean">
+            <column name="CREATE_USER" not-null="true" />
+        </property>
+        <property name="uploadUser" type="boolean">
+            <column name="UPLOAD_USER" not-null="true" />
+        </property>
+        <property name="deleteUser" type="boolean">
+            <column name="DELETE_USER" not-null="true" />
+        </property>
+        <property name="createFile" type="boolean">
+            <column name="CREATE_FILE" not-null="true" />
+        </property>
+        <property name="uploadFile" type="boolean">
+            <column name="UPLOAD_FILE" not-null="true" />
+        </property>
+        <property name="deleteFile" type="boolean">
+            <column name="DELETE_FILE" not-null="true" />
+        </property>
+        <property name="createProcess" type="boolean">
+            <column name="CREATE_PROCESS" not-null="true" />
+        </property>
+        <property name="uploadProcess" type="boolean">
+            <column name="UPLOAD_PROCESS" not-null="true" />
+        </property>
+        <property name="deleteProcess" type="boolean">
+            <column name="DELETE_PROCESS" not-null="true" />
+        </property>
+        <property name="createAutoStart" type="boolean">
+            <column name="CREATE_AUTO_START" not-null="true" />
+        </property>
+        <property name="uploadAutoStart" type="boolean">
+            <column name="UPLOAD_AUTO_START" not-null="true" />
+        </property>
+        <property name="deleteAutoStart" type="boolean">
+            <column name="DELETE_AUTO_START" not-null="true" />
+        </property>
+        <property name="createAutoRequeriment" type="boolean">
+            <column name="CREATE_AUTO_REQUERIMENT" not-null="true" />
+        </property>
+        <property name="uploadAutoRequeriment" type="boolean">
+            <column name="UPLOAD_AUTO_REQUERIMENT" not-null="true" />
+        </property>
+        <property name="deleteAutoRequeriment" type="boolean">
+            <column name="DELETE_AUTO_REQUERIMENT" not-null="true" />
+        </property>
+        <property name="createNotice" type="boolean">
+            <column name="CREATE_NOTICE" not-null="true" />
+        </property>
+        <property name="uploadNotice" type="boolean">
+            <column name="UPLOAD_NOTICE" not-null="true" />
+        </property>
+        <property name="deleteNotice" type="boolean">
+            <column name="DELETE_NOTICE" not-null="true" />
+        </property>
+        <property name="createTechnicalConcept" type="boolean">
+            <column name="CREATE_TECHNICAL_CONCEPT" not-null="true" />
+        </property>
+        <property name="uploadTechnicalConcept" type="boolean">
+            <column name="UPLOAD_TECHNICAL_CONCEPT" not-null="true" />
+        </property>
+        <property name="deleteTechnicalConcept" type="boolean">
+            <column name="DELETE_TECHNICAL_CONCEPT" not-null="true" />
+        </property>
+        <property name="createResolution" type="boolean">
+            <column name="CREATE_RESOLUTION" not-null="true" />
+        </property>
+        <property name="uploadResolution" type="boolean">
+            <column name="UPLOAD_RESOLUTION" not-null="true" />
+        </property>
+        <property name="deleteResolution" type="boolean">
+            <column name="DELETE_RESOLUTION" not-null="true" />
+        </property>
+        <property name="numberFiles" type="int">
+            <column name="NUMBER_FILES" not-null="true" />
+        </property>
+        <set name="employeeses" inverse="true">
+            <key>
+                <column name="FUNCTION_ID" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.Employees" />
+        </set>
+    </class>
+</hibernate-mapping>

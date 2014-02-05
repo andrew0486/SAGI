@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.HydricZone" table="hydric_zone" catalog="sagi">
+        <id name="hydricZoneId" type="int">
+            <column name="HYDRIC_ZONE_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="hydricZone" class="com.sagi.logic.HydricZone" fetch="select">
+            <column name="SUPER_HYDRIC_ZONE_ID" precision="8" scale="0" />
+        </many-to-one>
+        <property name="hydricZoneName" type="string">
+            <column name="HYDRIC_ZONE_NAME" length="45" not-null="true" />
+        </property>
+        <property name="hydricType" type="string">
+            <column name="HYDRIC_TYPE" length="15" not-null="true" />
+        </property>
+        <set name="locationses" inverse="false" table="locations_hydric_zone">
+            <key>
+                <column name="HYDRIC_ZONE_ID" precision="8" scale="0" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sagi.logic.Locations">
+                <column name="LOCATION_ID" precision="8" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="hydricZones" inverse="true">
+            <key>
+                <column name="SUPER_HYDRIC_ZONE_ID" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.HydricZone" />
+        </set>
+        <set name="sources" inverse="true" table="hydric_zone_source_supply">
+            <key>
+                <column name="HYDRIC_ZONE_ID" precision="8" scale="0" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sagi.logic.Source">
+                <column name="SOURCE_ID" precision="8" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.AutoRequirement" table="auto_requirement" catalog="sagi">
+        <id name="autoRequirementId" type="int">
+            <column name="AUTO_REQUIREMENT_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="employeesByEmpIdAuthorizeRequirement" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMP_ID_AUTHORIZE_REQUIREMENT" precision="8" scale="0" />
+        </many-to-one>
+        <many-to-one name="employeesByEmpIdElaborateRequirement" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMP_ID_ELABORATE_REQUIREMENT" precision="8" scale="0" />
+        </many-to-one>
+        <many-to-one name="processes" class="com.sagi.logic.Processes" fetch="select">
+            <column name="PROCESS_ID" length="22" not-null="true" />
+        </many-to-one>
+        <property name="autoRequirementDescription" type="string">
+            <column name="AUTO_REQUIREMENT_DESCRIPTION" length="100" not-null="true" />
+        </property>
+        <property name="autoRequirementCreationDate" type="date">
+            <column name="AUTO_REQUIREMENT_CREATION_DATE" length="10" not-null="true" />
+        </property>
+        <property name="statusAutoRequirement" type="java.lang.Boolean">
+            <column name="STATUS_AUTO_REQUIREMENT" />
+        </property>
+    </class>
+</hibernate-mapping>

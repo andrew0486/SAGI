@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.Points" table="points" catalog="sagi">
+        <id name="pointId" type="int">
+            <column name="POINT_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="source" class="com.sagi.logic.Source" fetch="select">
+            <column name="SOURCE_ID" precision="8" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="processes" class="com.sagi.logic.Processes" fetch="select">
+            <column name="PROCESS_ID" length="22" not-null="true" />
+        </many-to-one>
+        <property name="latitudeGrade" type="int">
+            <column name="LATITUDE_GRADE" precision="8" scale="0" not-null="true" />
+        </property>
+        <property name="latitudeMinute" type="int">
+            <column name="LATITUDE_MINUTE" precision="8" scale="0" not-null="true" />
+        </property>
+        <property name="latitudeSecond" type="int">
+            <column name="LATITUDE_SECOND" precision="8" scale="0" not-null="true" />
+        </property>
+        <property name="longitudeGrade" type="int">
+            <column name="LONGITUDE_GRADE" precision="8" scale="0" not-null="true" />
+        </property>
+        <property name="longitudeMinute" type="int">
+            <column name="LONGITUDE_MINUTE" precision="8" scale="0" not-null="true" />
+        </property>
+        <property name="longitudeSecond" type="int">
+            <column name="LONGITUDE_SECOND" precision="8" scale="0" not-null="true" />
+        </property>
+        <property name="caudal" type="long">
+            <column name="CAUDAL" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="downloadType" type="string">
+            <column name="DOWNLOAD_TYPE" length="20" />
+        </property>
+        <property name="downloadFrecuency" type="java.lang.Byte">
+            <column name="DOWNLOAD_FRECUENCY" precision="2" scale="0" />
+        </property>
+        <property name="downloadTime" type="java.lang.Long">
+            <column name="DOWNLOAD_TIME" precision="10" scale="0" />
+        </property>
+        <property name="gaugingSystem" type="string">
+            <column name="GAUGING_SYSTEM" length="35" />
+        </property>
+    </class>
+</hibernate-mapping>

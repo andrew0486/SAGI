@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.AutoStart" table="auto_start" catalog="sagi">
+        <id name="autoStartId" type="int">
+            <column name="AUTO_START_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="employeesByEmpIdAuthorizeAutoStart" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMP_ID_AUTHORIZE_AUTO_START" precision="8" scale="0" />
+        </many-to-one>
+        <many-to-one name="employeesByEmpIdElaborateAutoStart" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMP_ID_ELABORATE_AUTO_START" precision="8" scale="0" />
+        </many-to-one>
+        <many-to-one name="processes" class="com.sagi.logic.Processes" fetch="select">
+            <column name="PROCESS_ID" length="22" not-null="true" />
+        </many-to-one>
+        <property name="autoDescription" type="string">
+            <column name="AUTO_DESCRIPTION" length="100" not-null="true" />
+        </property>
+        <property name="autoStartCreationDate" type="date">
+            <column name="AUTO_START_CREATION_DATE" length="10" not-null="true" />
+        </property>
+        <property name="statusAutoStart" type="java.lang.Boolean">
+            <column name="STATUS_AUTO_START" />
+        </property>
+    </class>
+</hibernate-mapping>

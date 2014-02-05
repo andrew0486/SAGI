@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sagi?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">malakias04</property>
+    <mapping resource="com/sagi/controller/Points.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Notices.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Lands.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Subdirectorates.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Employees.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Jobs.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Processes.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Resolution.hbm.xml"/>
+    <mapping resource="com/sagi/controller/AutoStart.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Functions.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Users.hbm.xml"/>
+    <mapping resource="com/sagi/controller/JobHistory.hbm.xml"/>
+    <mapping resource="com/sagi/controller/TechnicalConcept.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Photography.hbm.xml"/>
+    <mapping resource="com/sagi/controller/HydricZone.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Source.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Locations.hbm.xml"/>
+    <mapping resource="com/sagi/controller/AutoRequirement.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Files.hbm.xml"/>
+    <mapping resource="com/sagi/controller/UseDescription.hbm.xml"/>
+    <mapping resource="com/sagi/controller/Uses.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

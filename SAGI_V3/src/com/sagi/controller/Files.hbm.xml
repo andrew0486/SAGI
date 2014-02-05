@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.Files" table="files" catalog="sagi">
+        <id name="fileId" type="string">
+            <column name="FILE_ID" length="20" />
+            <generator class="assigned" />
+        </id>
+        <property name="fileStartDate" type="date">
+            <column name="FILE_START_DATE" length="10" not-null="true" />
+        </property>
+        <property name="fileFiledNumber" type="string">
+            <column name="FILE_FILED_NUMBER" length="20" not-null="true" />
+        </property>
+        <property name="fileFiledDate" type="date">
+            <column name="FILE_FILED_DATE" length="10" not-null="true" />
+        </property>
+        <set name="processeses" inverse="true">
+            <key>
+                <column name="FILE_ID" length="20" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.Processes" />
+        </set>
+        <set name="employeeses" inverse="true" table="employees_files">
+            <key>
+                <column name="FILE_ID" length="20" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sagi.logic.Employees">
+                <column name="EMPLOYEE_ID" precision="8" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="userses" inverse="false" table="files_users">
+            <key>
+                <column name="FILE_ID" length="20" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sagi.logic.Users">
+                <column name="USER_ID" length="25" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

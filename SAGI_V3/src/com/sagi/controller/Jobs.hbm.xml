@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.Jobs" table="jobs" catalog="sagi">
+        <id name="jobId" type="int">
+            <column name="JOB_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="jobTitle" type="string">
+            <column name="JOB_TITLE" length="45" not-null="true" />
+        </property>
+        <set name="employeeses" inverse="true">
+            <key>
+                <column name="JOB_ID" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.Employees" />
+        </set>
+        <set name="jobHistories" inverse="true">
+            <key>
+                <column name="JOB_ID" precision="8" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.JobHistory" />
+        </set>
+    </class>
+</hibernate-mapping>

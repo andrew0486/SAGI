@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.Notices" table="notices" catalog="sagi">
+        <id name="noticeId" type="int">
+            <column name="NOTICE_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="employeesByEmpIdElaborateNotice" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMP_ID_ELABORATE_NOTICE" precision="8" scale="0" />
+        </many-to-one>
+        <many-to-one name="employeesByEmpIdAuthorizeNotice" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMP_ID_AUTHORIZE_NOTICE" precision="8" scale="0" />
+        </many-to-one>
+        <many-to-one name="processes" class="com.sagi.logic.Processes" fetch="select">
+            <column name="PROCESS_ID" length="22" not-null="true" />
+        </many-to-one>
+        <property name="noticeCreationDate" type="date">
+            <column name="NOTICE_CREATION_DATE" length="10" not-null="true" />
+        </property>
+        <property name="noticeVisitDate" type="date">
+            <column name="NOTICE_VISIT_DATE" length="10" not-null="true" />
+        </property>
+        <property name="noticeVisitTime" type="time">
+            <column name="NOTICE_VISIT_TIME" length="8" not-null="true" />
+        </property>
+        <property name="statusNotice" type="java.lang.Boolean">
+            <column name="STATUS_NOTICE" />
+        </property>
+    </class>
+</hibernate-mapping>

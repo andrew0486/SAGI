@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.Lands" table="lands" catalog="sagi">
+        <id name="landId" type="big_decimal">
+            <column name="LAND_ID" precision="20" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="locations" class="com.sagi.logic.Locations" fetch="select">
+            <column name="LOCATION_ID" precision="8" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="landName" type="string">
+            <column name="LAND_NAME" length="45" not-null="true" />
+        </property>
+        <property name="landArea" type="long">
+            <column name="LAND_AREA" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="landType" type="string">
+            <column name="LAND_TYPE" length="10" not-null="true" />
+        </property>
+        <property name="landStreetDirection" type="string">
+            <column name="LAND_STREET_DIRECTION" length="45" not-null="true" />
+        </property>
+        <property name="ownerName" type="string">
+            <column name="OWNER_NAME" length="45" />
+        </property>
+        <set name="processeses" inverse="true">
+            <key>
+                <column name="LAND_ID" precision="20" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.Processes" />
+        </set>
+    </class>
+</hibernate-mapping>

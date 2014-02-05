@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.Resolution" table="resolution" catalog="sagi">
+        <id name="resolutionId" type="int">
+            <column name="RESOLUTION_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="employeesByEmpIdElaborateResolution" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMP_ID_ELABORATE_RESOLUTION" precision="8" scale="0" />
+        </many-to-one>
+        <many-to-one name="employeesByEmpIdAuthorizeResolution" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMP_ID_AUTHORIZE_RESOLUTION" precision="8" scale="0" />
+        </many-to-one>
+        <many-to-one name="processes" class="com.sagi.logic.Processes" fetch="select">
+            <column name="PROCESS_ID" length="22" not-null="true" />
+        </many-to-one>
+        <property name="resolutionEndDate" type="date">
+            <column name="RESOLUTION_END_DATE" length="10" not-null="true" />
+        </property>
+        <property name="resolutionCreationDate" type="date">
+            <column name="RESOLUTION_CREATION_DATE" length="10" not-null="true" />
+        </property>
+        <property name="resolutionDescription" type="string">
+            <column name="RESOLUTION_DESCRIPTION" length="100" not-null="true" />
+        </property>
+        <property name="statusResolution" type="java.lang.Boolean">
+            <column name="STATUS_RESOLUTION" />
+        </property>
+    </class>
+</hibernate-mapping>

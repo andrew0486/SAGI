@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.Employees" table="employees" catalog="sagi">
+        <id name="employeeId" type="int">
+            <column name="EMPLOYEE_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="functions" column="FUNCTION_ID"/>
+        <many-to-one name="jobs" column="JOB_ID" />
+        <many-to-one name="subdirectorates" column="SUBDIRECTORATE_ID" />
+        <many-to-one name="employees" column="MANAGER_ID" />
+        <property name="firstName" type="string">
+            <column name="FIRST_NAME" length="45" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LAST_NAME" length="45" not-null="true" />
+        </property>
+        <property name="streetAddress" type="string">
+            <column name="STREET_ADDRESS" length="45" not-null="true" />
+        </property>
+        <property name="city" type="string">
+            <column name="CITY" length="45" not-null="true" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="PHONE_NUMBER" length="20" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="45" not-null="true" />
+        </property>
+        <property name="documentType" type="string">
+            <column name="DOCUMENT_TYPE" length="20" not-null="true" />
+        </property>
+        <property name="documentCity" type="string">
+            <column name="DOCUMENT_CITY" length="45" not-null="true" />
+        </property>
+        <property name="documentNumber" type="string">
+            <column name="DOCUMENT_NUMBER" length="25" not-null="true" />
+        </property>
+        <property name="hireDate" type="date">
+            <column name="HIRE_DATE" length="10" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="45" not-null="true" />
+        </property>
+        <property name="activeState" type="boolean">
+            <column name="ACTIVE_STATE" not-null="true" />
+        </property>
+        <property name="endDate" type="date">
+            <column name="END_DATE" length="10" />
+        </property>
+        <property name="firstTime" type="boolean">
+            <column name="FIRST_TIME" not-null="true" />
+        </property>
+        <set name="subdirectorateses" inverse="true">
+            <key>
+                <column name="EMPLOYEE_ID" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.Subdirectorates" />
+        </set>
+        <set name="resolutionsForEmpIdAuthorizeResolution" inverse="true">
+            <key>
+                <column name="EMP_ID_AUTHORIZE_RESOLUTION" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.Resolution" />
+        </set>
+        <set name="technicalConceptsForEmpIdElaborateConcept" inverse="true">
+            <key>
+                <column name="EMP_ID_ELABORATE_CONCEPT" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.TechnicalConcept" />
+        </set>
+        <set name="autoStartsForEmpIdElaborateAutoStart" inverse="true">
+            <key>
+                <column name="EMP_ID_ELABORATE_AUTO_START" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.AutoStart" />
+        </set>
+        <set name="autoStartsForEmpIdAuthorizeAutoStart" inverse="true">
+            <key>
+                <column name="EMP_ID_AUTHORIZE_AUTO_START" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.AutoStart" />
+        </set>
+        <set name="autoRequirementsForEmpIdAuthorizeRequirement" inverse="true">
+            <key>
+                <column name="EMP_ID_AUTHORIZE_REQUIREMENT" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.AutoRequirement" />
+        </set>
+        <set name="employeeses" inverse="true">
+            <key>
+                <column name="MANAGER_ID" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.Employees" />
+        </set>
+        <set name="jobHistories" inverse="true">
+            <key>
+                <column name="EMPLOYEE_ID" precision="8" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.JobHistory" />
+        </set>
+        <set name="noticesesForEmpIdAuthorizeNotice" inverse="true">
+            <key>
+                <column name="EMP_ID_AUTHORIZE_NOTICE" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.Notices" />
+        </set>
+        <set name="fileses" inverse="false" table="employees_files">
+            <key>
+                <column name="EMPLOYEE_ID" precision="8" scale="0" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sagi.logic.Files">
+                <column name="FILE_ID" length="20" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="processeses" inverse="true">
+            <key>
+                <column name="EMPLOYEE_ID" precision="8" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.Processes" />
+        </set>
+        <set name="functionses" inverse="true">
+            <key>
+                <column name="EMPLOYEE_ID" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.Functions" />
+        </set>
+        <set name="autoRequirementsForEmpIdElaborateRequirement" inverse="true">
+            <key>
+                <column name="EMP_ID_ELABORATE_REQUIREMENT" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.AutoRequirement" />
+        </set>
+        <set name="resolutionsForEmpIdElaborateResolution" inverse="true">
+            <key>
+                <column name="EMP_ID_ELABORATE_RESOLUTION" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.Resolution" />
+        </set>
+        <set name="technicalConceptsForEmpIdAutorizeConcept" inverse="true">
+            <key>
+                <column name="EMP_ID_AUTORIZE_CONCEPT" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.TechnicalConcept" />
+        </set>
+        <set name="noticesesForEmpIdElaborateNotice" inverse="true">
+            <key>
+                <column name="EMP_ID_ELABORATE_NOTICE" precision="8" scale="0" />
+            </key>
+            <one-to-many class="com.sagi.logic.Notices" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.Users" table="users" catalog="sagi">
+        <id name="userId" type="string">
+            <column name="USER_ID" length="25" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usersByUserRepresentativeUserId" class="com.sagi.logic.Users" fetch="select">
+            <column name="USER_REPRESENTATIVE_USER_ID" length="25" />
+        </many-to-one>
+        <many-to-one name="usersByUserRepresntativeLawyerId" class="com.sagi.logic.Users" fetch="select">
+            <column name="USER_REPRESNTATIVE_LAWYER_ID" length="25" />
+        </many-to-one>
+        <property name="userType" type="string">
+            <column name="USER_TYPE" length="10" not-null="true" />
+        </property>
+        <property name="userCharacteristic" type="string">
+            <column name="USER_CHARACTERISTIC" length="10" />
+        </property>
+        <property name="tenancyType" type="string">
+            <column name="TENANCY_TYPE" length="20" not-null="true" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="FIRST_NAME" length="45" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LAST_NAME" length="45" not-null="true" />
+        </property>
+        <property name="streetAddress" type="string">
+            <column name="STREET_ADDRESS" length="45" not-null="true" />
+        </property>
+        <property name="city" type="string">
+            <column name="CITY" length="45" not-null="true" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="PHONE_NUMBER" length="20" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="45" />
+        </property>
+        <property name="documentType" type="string">
+            <column name="DOCUMENT_TYPE" length="20" not-null="true" />
+        </property>
+        <property name="documentCity" type="string">
+            <column name="DOCUMENT_CITY" length="45" not-null="true" />
+        </property>
+        <set name="usersesForUserRepresentativeUserId" inverse="true">
+            <key>
+                <column name="USER_REPRESENTATIVE_USER_ID" length="25" />
+            </key>
+            <one-to-many class="com.sagi.logic.Users" />
+        </set>
+        <set name="fileses" inverse="true" table="files_users">
+            <key>
+                <column name="USER_ID" length="25" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sagi.logic.Files">
+                <column name="FILE_ID" length="20" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="usersesForUserRepresntativeLawyerId" inverse="true">
+            <key>
+                <column name="USER_REPRESNTATIVE_LAWYER_ID" length="25" />
+            </key>
+            <one-to-many class="com.sagi.logic.Users" />
+        </set>
+    </class>
+</hibernate-mapping>

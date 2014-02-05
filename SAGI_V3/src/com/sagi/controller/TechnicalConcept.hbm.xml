@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.TechnicalConcept" table="technical_concept" catalog="sagi">
+        <id name="conceptId" type="int">
+            <column name="CONCEPT_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="employeesByEmpIdAutorizeConcept" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMP_ID_AUTORIZE_CONCEPT" precision="8" scale="0" />
+        </many-to-one>
+        <many-to-one name="employeesByEmpIdElaborateConcept" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMP_ID_ELABORATE_CONCEPT" precision="8" scale="0" />
+        </many-to-one>
+        <many-to-one name="processes" class="com.sagi.logic.Processes" fetch="select">
+            <column name="PROCESS_ID" length="22" not-null="true" />
+        </many-to-one>
+        <property name="conceptOposition" type="boolean">
+            <column name="CONCEPT_OPOSITION" not-null="true" />
+        </property>
+        <property name="conceptUserCompensation" type="boolean">
+            <column name="CONCEPT_USER_COMPENSATION" not-null="true" />
+        </property>
+        <property name="conceptUserCaudal" type="long">
+            <column name="CONCEPT_USER_CAUDAL" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="conceptUserAnnexe" type="boolean">
+            <column name="CONCEPT_USER_ANNEXE" not-null="true" />
+        </property>
+        <property name="conceptUserRate" type="boolean">
+            <column name="CONCEPT_USER_RATE" not-null="true" />
+        </property>
+        <property name="conceptUserDescription" type="string">
+            <column name="CONCEPT_USER_DESCRIPTION" length="100" not-null="true" />
+        </property>
+        <property name="statusTechnicalConcept" type="boolean">
+            <column name="STATUS_TECHNICAL_CONCEPT" not-null="true" />
+        </property>
+        <set name="photographies" inverse="true">
+            <key>
+                <column name="CONCEPT_ID" precision="8" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.Photography" />
+        </set>
+    </class>
+</hibernate-mapping>

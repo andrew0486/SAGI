@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.Processes" table="processes" catalog="sagi">
+        <id name="processId" type="string">
+            <column name="PROCESS_ID" length="22" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="employees" class="com.sagi.logic.Employees" fetch="select">
+            <column name="EMPLOYEE_ID" precision="8" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="lands" class="com.sagi.logic.Lands" fetch="select">
+            <column name="LAND_ID" precision="20" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="files" class="com.sagi.logic.Files" fetch="select">
+            <column name="FILE_ID" length="20" not-null="true" />
+        </many-to-one>
+        <property name="processType" type="string">
+            <column name="PROCESS_TYPE" length="45" not-null="true" />
+        </property>
+        <property name="processStartDate" type="date">
+            <column name="PROCESS_START_DATE" length="10" not-null="true" />
+        </property>
+        <property name="processTime" type="int">
+            <column name="PROCESS_TIME" not-null="true" />
+        </property>
+        <property name="processInvestmentCost" type="float">
+            <column name="PROCESS_INVESTMENT_COST" precision="8" not-null="true" />
+        </property>
+        <property name="processOperationCost" type="float">
+            <column name="PROCESS_OPERATION_COST" precision="8" not-null="true" />
+        </property>
+        <set name="autoStarts" inverse="true">
+            <key>
+                <column name="PROCESS_ID" length="22" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.AutoStart" />
+        </set>
+        <set name="pointses" inverse="true">
+            <key>
+                <column name="PROCESS_ID" length="22" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.Points" />
+        </set>
+        <set name="resolutions" inverse="true">
+            <key>
+                <column name="PROCESS_ID" length="22" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.Resolution" />
+        </set>
+        <set name="noticeses" inverse="true">
+            <key>
+                <column name="PROCESS_ID" length="22" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.Notices" />
+        </set>
+        <set name="useDescriptions" inverse="true">
+            <key>
+                <column name="PROCESS_ID" length="22" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.UseDescription" />
+        </set>
+        <set name="technicalConcepts" inverse="true">
+            <key>
+                <column name="PROCESS_ID" length="22" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.TechnicalConcept" />
+        </set>
+        <set name="autoRequirements" inverse="true">
+            <key>
+                <column name="PROCESS_ID" length="22" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.AutoRequirement" />
+        </set>
+    </class>
+</hibernate-mapping>

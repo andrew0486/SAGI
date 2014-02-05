@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.UseDescription" table="use_description" catalog="sagi">
+        <id name="useDescriptionId" type="int">
+            <column name="USE_DESCRIPTION_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="processes" class="com.sagi.logic.Processes" fetch="select">
+            <column name="PROCESS_ID" length="22" not-null="true" />
+        </many-to-one>
+        <property name="userNumber" type="java.lang.Integer">
+            <column name="USER_NUMBER" />
+        </property>
+        <property name="familiesNumber" type="java.lang.Integer">
+            <column name="FAMILIES_NUMBER" />
+        </property>
+        <property name="permanentUserNumber" type="java.lang.Integer">
+            <column name="PERMANENT_USER_NUMBER" />
+        </property>
+        <property name="transientUserNumber" type="java.lang.Integer">
+            <column name="TRANSIENT_USER_NUMBER" />
+        </property>
+        <property name="animalType" type="string">
+            <column name="ANIMAL_TYPE" length="400" />
+        </property>
+        <property name="animalNumber" type="java.lang.Integer">
+            <column name="ANIMAL_NUMBER" />
+        </property>
+        <property name="cropType" type="string">
+            <column name="CROP_TYPE" length="400" />
+        </property>
+        <property name="cropArea" type="java.lang.Long">
+            <column name="CROP_AREA" precision="10" scale="0" />
+        </property>
+        <property name="cropIrrigationType" type="string">
+            <column name="CROP_IRRIGATION_TYPE" length="20" />
+        </property>
+        <property name="useDescription" type="string">
+            <column name="USE_DESCRIPTION" length="4000" />
+        </property>
+        <property name="treatmentSystem" type="string">
+            <column name="TREATMENT_SYSTEM" length="35" />
+        </property>
+        <set name="useses" inverse="false" table="uses_use_description">
+            <key>
+                <column name="USE_DESCRIPTION_ID" precision="8" scale="0" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sagi.logic.Uses">
+                <column name="USE_ID" precision="8" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

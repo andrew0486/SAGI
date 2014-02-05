@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 03-feb-2014 12:00:45 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sagi.logic.Source" table="source" catalog="sagi">
+        <id name="sourceId" type="int">
+            <column name="SOURCE_ID" precision="8" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="sourceName" type="string">
+            <column name="SOURCE_NAME" length="45" not-null="true" />
+        </property>
+        <property name="sourceType" type="string">
+            <column name="SOURCE_TYPE" length="30" not-null="true" />
+        </property>
+        <property name="suspendedSolids" type="java.lang.Long">
+            <column name="SUSPENDED_SOLIDS" precision="10" scale="0" />
+        </property>
+        <property name="dbo5" type="java.lang.Long">
+            <column name="DBO5" precision="10" scale="0" />
+        </property>
+        <property name="dqo" type="java.lang.Long">
+            <column name="DQO" precision="10" scale="0" />
+        </property>
+        <property name="sourceCaudal" type="java.lang.Long">
+            <column name="SOURCE_CAUDAL" precision="10" scale="0" />
+        </property>
+        <property name="SD" type="string">
+            <column name="S_D" length="1" not-null="true" />
+        </property>
+        <set name="hydricZones" inverse="false" table="hydric_zone_source_supply">
+            <key>
+                <column name="SOURCE_ID" precision="8" scale="0" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sagi.logic.HydricZone">
+                <column name="HYDRIC_ZONE_ID" precision="8" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="pointses" inverse="true">
+            <key>
+                <column name="SOURCE_ID" precision="8" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.sagi.logic.Points" />
+        </set>
+    </class>
+</hibernate-mapping>
