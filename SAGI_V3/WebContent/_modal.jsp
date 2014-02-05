@@ -21,8 +21,8 @@
 						</div>
 						<div class="modal-body">
 							<form action="login.jsp"  class="modal-form" method="post">
-					        	<input type="text" class="input-block-level" placeholder="Nombre de Usuario" name="userName" autofocus="autofocus" autocomplete="off" required>
-					        	<input type="password" class="input-block-level" placeholder="Contraseña" name="password" required>
+					        	<input type="text" class="input-block-level :wait;0000 :min_length;7" placeholder="Nombre de Usuario" name="userName" autofocus="autofocus" autocomplete="off" required>
+					        	<input type="password" class="input-block-level :wait;0000 :min_length;6" placeholder="Contraseña" name="password" required>
 					        	<label class="checkbox">
 					          	<input type="checkbox" value="remember-me"> Recuerdame
 					        	</label>

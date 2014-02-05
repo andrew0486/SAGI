@@ -29,11 +29,11 @@
 		    
 		  	for (int i = 0 ; i < listSubdirectorates.size() ; i++ ){
 		  		System.out.println(listSubdirectorates.get(i).getSubdirectorateName());
-		  		List<Employees> listEmployees = EmployeeController.listBySubdirectorate(listSubdirectorates.get(i).getSubdirectorateId());
+		  		List<Employees> listEmployeesSubdir = EmployeeController.listBySubdirectorate(listSubdirectorates.get(i).getSubdirectorateId());
 		  		String empleados = "";
-		  		for (int j = 0 ; j < listEmployees.size() ; j++ ){
-		  			empleados += "'" + listEmployees.get(j).getLastName() + " " + listEmployees.get(j).getFirstName() + "'";
-		  			if (j == listEmployees.size()-1){
+		  		for (int j = 0 ; j < listEmployeesSubdir.size() ; j++ ){
+		  			empleados += "'" + listEmployeesSubdir.get(j).getLastName() + " " + listEmployeesSubdir.get(j).getFirstName() + "'";
+		  			if (j == listEmployeesSubdir.size()-1){
 		  				
 		  			}else{
 		  				empleados += ",";

@@ -66,6 +66,40 @@ function eliminarEmployeeUpdate() {
 			<%}%>
 		}
 	</script>
+	<script language="javascript">
+		function Combos(x) {
+		  ItDepend=document.getElementById('manager');
+		  if(!ItDepend){return;}                 
+		  var mitems=new Array();
+		  mitems['Elige']=[''];
+		  
+		  <%
+		    
+		  	for (int i = 0 ; i < listSubdirectorates.size() ; i++ ){
+		  		System.out.println(listSubdirectorates.get(i).getSubdirectorateName());
+		  		List<Employees> listEmployeesSubdir = EmployeeController.listBySubdirectorate(listSubdirectorates.get(i).getSubdirectorateId());
+		  		String empleados = "";
+		  		for (int j = 0 ; j < listEmployeesSubdir.size() ; j++ ){
+		  			empleados += "'" + listEmployeesSubdir.get(j).getLastName() + " " + listEmployeesSubdir.get(j).getFirstName() + "'";
+		  			if (j == listEmployeesSubdir.size()-1){
+		  				
+		  			}else{
+		  				empleados += ",";
+		  			}
+		  		}
+		  		out.print("mitems['"+ listSubdirectorates.get(i).getSubdirectorateId() +"'] = [" + empleados + "];");
+		  	}
+		  %>
+		  ItDepend.options.length=0;
+		  ItActual=mitems[x.options[x.selectedIndex].value];
+		  if(!ItActual){return;}
+		  ItDepend.options.length=ItActual.length;
+		  for(var i=0;i<ItActual.length;i++) {
+		    ItDepend.options[i].text=ItActual[i];
+		    ItDepend.options[i].value=ItActual[i];
+		  }
+		}		 
+	</script>
 </head>
 <body>
 <jsp:include page="_top.jsp"></jsp:include>
@@ -363,7 +397,7 @@ function eliminarEmployeeUpdate() {
 						<div class="row">
 							<div class="span5 offset1">
 								Subdirección:<br>
-								<select id="subdirectorate" name="subdirectorate" class="input-block-level" required>
+								<select id="subdirectorate" name="subdirectorate" class="input-block-level" required onchange="Combos(this)">
 									<option></option> 
 									<%for(int i=0; i<listSubdirectorates.size(); i++){ %>
 									<option value="<%= listSubdirectorates.get(i).getSubdirectorateId()%>" 
@@ -392,7 +426,7 @@ function eliminarEmployeeUpdate() {
 										}
 										%>
 									>
-										<%= listEmployees.get(i).getLastName()+" "+listEmployees.get(i).getFirstName()%>
+										<!-- %= listEmployees.get(i).getLastName()+" "+listEmployees.get(i).getFirstName()%-->
 									</option>
 									<% } /*end for*/ %>
 								</select>

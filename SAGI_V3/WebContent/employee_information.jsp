@@ -127,6 +127,7 @@
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/../js/vanadium.js"></script>
 </body>
 </html>
 <%}else { session.setAttribute("errorPagina", "Para acceder a esta función necesita iniciar sesión.");%>
