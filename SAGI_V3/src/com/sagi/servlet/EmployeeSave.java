@@ -89,7 +89,7 @@ public class EmployeeSave extends HttpServlet {
 			System.out.println("sesion nula desde el employeesave");
 		}
 
-		SessionDB.init();
+//		SessionDB.init();
 		List<Employees> listaEmp = EmployeeController.list();
 		int funtionId = FunctionController.list().size()+1;
 
@@ -196,7 +196,7 @@ public class EmployeeSave extends HttpServlet {
 			e.printStackTrace();
 			response.sendRedirect("_modal.html");
 		}
-		SessionDB.close();
+//		SessionDB.close();
 
 	}
 	

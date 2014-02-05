@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.SendResult;
 
+import com.sagi.database.SessionDB;
+
 /**
  * Servlet implementation class Logout
  */
@@ -35,6 +37,7 @@ public class Logout extends HttpServlet {
 			session.removeAttribute("userName");
 			session.removeAttribute("success");
 			session.invalidate();
+			SessionDB.close();
 		}
 		response.sendRedirect("index.jsp");
 	}

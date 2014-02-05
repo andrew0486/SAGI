@@ -40,7 +40,7 @@ function eliminarEmployeeUpdate() {
 	List<Subdirectorates> listSubdirectorates = SubdirectorateController.listOrder();
 	List<Employees> listEmployees = EmployeeController.listOrder();
 	List<Jobs> listJob=JobController.listOrder();
-	SessionDB.close();
+	//SessionDB.close();
 	int identi = employee.getEmployeeId();
 %>
 

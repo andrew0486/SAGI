@@ -79,7 +79,7 @@ if (userId !=null){ %>
 					</tr>
 					<%
 						} //end for 
-						SessionDB.close();
+						//SessionDB.close();
 					%>
 				</tbody>
 			</table>

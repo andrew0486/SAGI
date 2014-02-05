@@ -80,20 +80,25 @@ public class Login extends HttpServlet {
 							this.function = FunctionController.get(emp.getFunctions().getFunctionId());
 						}else if (emp.getEndDate().before(new Date())) {
 							error = "El usuario con el que esta intentando acceder ya ha finalizado contrato";
+							SessionDB.close();
 						}					
 					}else{
 						error = "El Usuario se encuentra inactivo";
+						SessionDB.close();
 					}
 				}else{
 					error = "Usuario invalido, vuelve a intentarlo";
+					SessionDB.close();
 				}
 			}else{
 				error = "Usuario invalido, vuelve a intentarlo";
+				SessionDB.close();
 			}
 		}else{
 			error = "El usuario ingresado no existe";
+			SessionDB.close();
 		}
-		SessionDB.close();
+//		SessionDB.close();
 		return employee;
 	}
 }

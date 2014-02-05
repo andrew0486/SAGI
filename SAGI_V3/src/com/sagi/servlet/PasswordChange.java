@@ -43,11 +43,11 @@ public class PasswordChange extends HttpServlet {
 			session.setAttribute("errorContrasena", "No se pudo realizar acción, vuelva a intentarlo nuevamente");
 		}else{
 			if (passwordNew1.equals(passwordConfirm)) {
-				SessionDB.init();
+//				SessionDB.init();
 				Employees employeeUpdate = EmployeeController.get(employee.getEmployeeId());
 				employeeUpdate.setPassword(passwordNew1);
 				EmployeeController.update(employeeUpdate);
-				SessionDB.close();
+//				SessionDB.close();
 				session.setAttribute("successContrasena", "Contraseña actualizada correctamente");
 			}else{
 				session.setAttribute("errorContrasena", "No se pudo realizar acción, vuelva a intentarlo nuevamente");
